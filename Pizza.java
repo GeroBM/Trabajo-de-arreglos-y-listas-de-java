@@ -10,7 +10,13 @@ public class Pizza {
         this.ingredientes = ingredientes;
     }
 
+    // Devuelve el nombre de la pizza
     public String getNombre() {
         return nombre;
+    }
+
+    // Devuelve la lista de ingredientes de la pizza
+    public String[] getIngredientes() {
+        return ingredientes;
     }
 }

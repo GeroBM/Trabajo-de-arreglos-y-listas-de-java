@@ -16,20 +16,18 @@ public class Pila {
         nuevo.siguiente = tope;// El nuevo nodo apunta al tope actual
         tope = nuevo;// El nuevo nodo se convierte en el tope
         cantidad++;
-        System.out.println("Pedido agregado: " + dato);
     }
 
     // pop(): Retira y devuelve el elemento de la cima
     // El tope pasa a ser el nodo que estaba debajo
-    public String pop() {
+    public Pizza pop() {
         if (isEmpty()) {
             System.out.println("No hay pedidos, no hay nada que retirar.");
             return null;
         }
-        String datoRetirado = tope.pedido.getNombre();// Se guarda el dato antes de eliminarlo
+        Pizza datoRetirado = tope.pedido;// Se guarda el dato antes de eliminarlo
         tope = tope.siguiente;// El tope ahora es el nodo de abajo
         cantidad--;
-        System.out.println("Pedido retirado: " + datoRetirado);
         return datoRetirado;
     }
 
@@ -40,29 +38,17 @@ public class Pila {
             System.out.println("No hay pedidos, no hay nada que ver.");
             return;
         }
-        System.out.println("Pedido en la cima: " + tope.pedido);
+        System.out.println("Pedido en la cima: " + tope.pedido.getNombre());
+        System.out.println("Ingredientes: ");
+        String[] ingredientes = tope.pedido.getIngredientes();
+        for (int i = 0; i < ingredientes.length; i++) {
+            System.out.println("  - " + ingredientes[i]);
+        }
     }
 
     // isEmpty(): Verifica si la pila esta vacia
     // Retorna true si no hay elementos, false si hay al menos uno
     public boolean isEmpty() {
         return tope == null;
-    }
-
-    // mostrar(): Recorre la pila de arriba hacia abajo mostrando todos los elementos
-    public void mostrar() {
-        if (isEmpty()) {
-            System.out.println("No hay pedidos, no hay nada que ver.");
-            return;
-        }
-        System.out.println("=== Pedidos pendientes (de arriba a abajo) ===");
-        Nodo actual = tope;           // Se inicia desde el tope
-        int posicion = 1;
-        while (actual != null) {      // Se recorre hasta que no haya mas nodos
-            System.out.println("  " + posicion + ". " + actual.pedido);
-            actual = actual.siguiente; // Se avanza al siguiente nodo (el de abajo)
-            posicion++;
-        }
-        System.out.println("Total de pedidos: " + cantidad);
     }
 }

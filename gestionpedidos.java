@@ -7,7 +7,8 @@ public class gestionpedidos {
         // Variables para gestionar los pedidos
         String nombrePizza;
         String[] ingredientes = new String[3];
-        Pila Pedidos = new Pila();
+        Pila PedidosPrincipal = new Pila();
+        Pila PedidosSecundario = new Pila();
         int opcion;
 
         // Menú principal
@@ -32,18 +33,32 @@ public class gestionpedidos {
                         ingredientes[i] = teclado.nextLine();
                     }
                     Pizza nuevaPizza = new Pizza(nombrePizza, ingredientes);
-                    Pedidos.push(nuevaPizza);
-
+                    PedidosPrincipal.push(nuevaPizza);
+                    System.out.println("Pedido " + nuevaPizza.getNombre() + " agregado con éxito.");   
                     break;
                 case 2:
                     // Retirar pedido (undo)
-
+                    if (!PedidosPrincipal.isEmpty()){
+                        Pizza pedidoRetirado = PedidosPrincipal.pop();
+                        PedidosSecundario.push(pedidoRetirado);
+                        System.out.println("Pedido " + pedidoRetirado.getNombre() + " retirado con éxito.");
+                    } else {
+                        System.out.println("No hay pedidos para retirar.");
+                    }
                     break;
                 case 3:
                     // Recuperar pedido (redo)
+                    if (!PedidosSecundario.isEmpty()){
+                        Pizza pedidoRecuperado = PedidosSecundario.pop();
+                        PedidosPrincipal.push(pedidoRecuperado);
+                        System.out.println("Pedido " + pedidoRecuperado.getNombre() + " recuperado con éxito.");
+                    } else {
+                        System.out.println("No hay pedidos para recuperar.");
+                    }
                     break;
                 case 4:
                     // Mostrar pedido actual
+                    PedidosPrincipal.peek();
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
