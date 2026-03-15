@@ -11,12 +11,12 @@ public class Pila {
 
     // push(): Coloca un nuevo elemento en la cima de la pila
     // El nuevo nodo apunta al antiguo tope, y se convierte en el nuevo tope
-    public void push(String dato) {
+    public void push(Pizza dato) {
         Nodo nuevo = new Nodo(dato);// Se crea el nuevo nodo
         nuevo.siguiente = tope;// El nuevo nodo apunta al tope actual
         tope = nuevo;// El nuevo nodo se convierte en el tope
         cantidad++;
-        System.out.println("Pedido agregada: " + dato);
+        System.out.println("Pedido agregado: " + dato);
     }
 
     // pop(): Retira y devuelve el elemento de la cima
@@ -26,7 +26,7 @@ public class Pila {
             System.out.println("No hay pedidos, no hay nada que retirar.");
             return null;
         }
-        String datoRetirado = tope.pedido;// Se guarda el dato antes de eliminarlo
+        String datoRetirado = tope.pedido.getNombre();// Se guarda el dato antes de eliminarlo
         tope = tope.siguiente;// El tope ahora es el nodo de abajo
         cantidad--;
         System.out.println("Pedido retirado: " + datoRetirado);
