@@ -6,7 +6,6 @@ public class gestionpedidos {
 
         // Variables para gestionar los pedidos
         String nombrePizza;
-        String[] ingredientes = new String[3];
         Pila PedidosPrincipal = new Pila();
         Pila PedidosSecundario = new Pila();
         int opcion;
@@ -26,6 +25,7 @@ public class gestionpedidos {
             switch (opcion) {
                 case 1:
                     // Agregar pedido
+                    String[] ingredientes = new String[3];
                     System.out.print("Ingrese el nombre de la pizza: ");
                     nombrePizza = teclado.nextLine();
                     for (int i = 0; i < 3; i++) {
@@ -34,7 +34,7 @@ public class gestionpedidos {
                     }
                     Pizza nuevaPizza = new Pizza(nombrePizza, ingredientes);
                     PedidosPrincipal.push(nuevaPizza);
-                    System.out.println("Pedido " + nuevaPizza.getNombre() + " agregado con éxito.");   
+                    System.out.println("Pedido " + nuevaPizza.getNombre() + " agregado con éxito.");
                     break;
                 case 2:
                     // Retirar pedido (undo)
@@ -61,10 +61,10 @@ public class gestionpedidos {
                     PedidosPrincipal.peek();
                     break;
                 case 0:
-                    System.out.println("Saliendo del programa...");
+                    System.out.println("Saliendo del programa..."); // Se culmina el programa.
                     break;
                 default:
-                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+                    System.out.println("Opción no válida. Por favor, seleccione una opción válida."); // Salta un error al digitar un numero que no esta en la lista.
             }
         } while (opcion != 0);
         teclado.close();
