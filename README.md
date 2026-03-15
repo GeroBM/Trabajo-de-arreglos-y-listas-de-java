@@ -46,3 +46,9 @@ La actividad busca evaluar la capacidad del estudiante para:
 ![Vista Final](https://i.imgur.com/1imo5jB.png)
 
 ---
+
+### 🎬 Corto video explicativo del codigo
+
+> https://drive.google.com/file/d/1r1POFLE1qqRQtnfU68z5YdvdcIm3PBQX/view?usp=drive_link
+
+---
